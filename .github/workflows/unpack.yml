@@ -8,9 +8,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          unzip -q tamil-music-github.zip
-          rsync -a --exclude=.github tamilsongs-main/ ./
-          rm -rf tamilsongs-main tamil-music-github.zip
+          unzip -q cloud.zip -d _x
+          d=_x
+          if [ "$(ls -A _x | wc -l)" -eq 1 ] && [ -d "_x/$(ls -A _x)" ]; then d="_x/$(ls -A _x)"; fi
+          rsync -a --exclude=.github "$d"/ ./
+          rm -rf _x cloud.zip
           git config user.name github-actions
           git config user.email github-actions@users.noreply.github.com
           git add -A
