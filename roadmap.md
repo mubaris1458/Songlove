@@ -1,0 +1,6 @@
+- [x] Audit the existing 2,209-song catalog and identify safe duplicate movie records.
+- [x] Import the eight Paal Dabba and eleven Asal Kolaar Drive songs without adding sample audio.
+- [x] Merge only provably duplicate movie records and preserve every unique Drive file.
+- [ ] Match the large third Drive folder and remaining filename-only songs to real movies; blocked until reliable metadata is available.
+- [x] Recalculate current unique-song and unique-record counts for the report.
+- [ ] Add a secure admin-only AI Gateway workflow to submit song filenames/metadata, receive likely movie matches, and flag uncertain results without auto-applying guesses.

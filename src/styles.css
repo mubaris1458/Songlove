@@ -1,0 +1,162 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
+  --radius-3xl: calc(var(--radius) + 20px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.9rem;
+  --background: oklch(0.16 0.02 285);
+  --foreground: oklch(0.97 0.005 285);
+  --surface: oklch(0.21 0.025 287);
+  --surface-2: oklch(0.26 0.03 288);
+  --card: oklch(0.21 0.025 287);
+  --card-foreground: oklch(0.97 0.005 285);
+  --popover: oklch(0.21 0.025 287);
+  --popover-foreground: oklch(0.97 0.005 285);
+  --primary: oklch(0.78 0.19 62);
+  --primary-foreground: oklch(0.19 0.03 60);
+  --brand: oklch(0.78 0.19 62);
+  --brand-foreground: oklch(0.19 0.03 60);
+  --secondary: oklch(0.26 0.03 288);
+  --secondary-foreground: oklch(0.97 0.005 285);
+  --muted: oklch(0.26 0.03 288);
+  --muted-foreground: oklch(0.72 0.02 286);
+  --accent: oklch(0.66 0.17 336);
+  --accent-foreground: oklch(0.98 0.005 336);
+  --destructive: oklch(0.63 0.23 25);
+  --destructive-foreground: oklch(0.98 0.005 25);
+  --border: oklch(0.3 0.02 287);
+  --input: oklch(0.3 0.02 287);
+  --ring: oklch(0.78 0.19 62);
+  --gradient-brand: linear-gradient(
+    135deg,
+    oklch(0.78 0.19 62),
+    oklch(0.66 0.17 336)
+  );
+  --gradient-glow: radial-gradient(
+    60% 80% at 20% 0%,
+    color-mix(in oklab, var(--brand) 22%, transparent),
+    transparent 70%
+  );
+  --shadow-card: 0 18px 40px -22px oklch(0 0 0 / 0.85);
+  --shadow-glow: 0 10px 40px -12px color-mix(in oklab, var(--brand) 55%, transparent);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility gradient-brand {
+  background-image: var(--gradient-brand);
+}
+
+@utility page-glow {
+  background-image: var(--gradient-glow);
+}
+
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+@utility shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+@utility scroll-row {
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-rise {
+  animation: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes bar {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@utility eq-bar {
+  animation: bar 0.9s ease-in-out infinite;
+  transform-origin: bottom;
+}
